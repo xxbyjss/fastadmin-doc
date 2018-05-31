@@ -568,7 +568,7 @@ $email = new \app\common\library\Email;
 其次我们可以设置邮件主题正文、接收者、标题等信息，比如
 
 ```php
-$email->subect('这里是邮件标题')->to('youremail@163.com')->message('这里是邮件正文')->send();
+$email->subject('这里是邮件标题')->to('youremail@163.com')->message('这里是邮件正文')->send();
 ```
 
 如果我们邮件发送失败，想获取错误的详情，可使用

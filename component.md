@@ -115,7 +115,9 @@ Selectpage所支持的扩展属性
 | data-params           | 自定义扩展参数     | data-params='{"custom[type]":"test"}' |
 | data-select-only      | 是否为只读模式     | data-select-only="true"               |
 
-> FastAdmin在生成CRUD时会对包含下划线的字段默认生成selectpage模式，比如`user_id`将自动生成`data-source="user/index"`，默认读取的是`id`和`name`字段，如果需要修改，请参考上方的修改方法。
+> Selectpage的`data-params`支持`function`类型,如果需要动态传参(例如联动查询),则可以在JS中将`data-params`添加一个function处理即可
+> FastAdmin在生成CRUD时会对包含下划线的字段默认生成动态下拉列表，比如`user_id`将自动生成`data-source="user/index"`
+> 默认读取的是`id`和`name`字段，如果需要修改，请参考上方的参数修改方法。
 
 更多的使用方法请参考[Selectpage官方教程](https://terryz.github.io/)
 
@@ -131,6 +133,7 @@ FastAdmin的富文本编辑器只需要给对应的textarea增加一个class为`
 | Umeditor   | 百度出品、简单、易用、支持公式、图片直传第三方存储 | [下载](https://www.fastadmin.net/store/umeditor.html)   |
 | Ueditor    | 百度出品、复杂、功能全、图片不能直传第三方存储     | [下载](https://www.fastadmin.net/store/ueditor.html)    |
 
+> 如果是自定义表单,例如在index页面,切记使用`Form.api.bindevent`绑定事件才会生效,否则单独添加个`editor`是不会生效的
 > 在安装完对应的富文本插件后切记启用、刷新插件缓存并清除浏览器缓存后才生效。
 
 ## 表单验证
