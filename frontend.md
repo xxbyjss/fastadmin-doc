@@ -175,6 +175,13 @@ Form.api.bindevent($("form[role=form]"), function(data, ret){
 	Toastr.success("成功");
 }, function(data, ret){
   	Toastr.success("失败");
+}, function(success, error){
+    //bindevent的第三个参数为提交前的回调
+    //如果我们需要在表单提交前做一些数据处理，则可以在此方法处理
+    //注意如果我们需要阻止表单，可以在此使用return false;即可
+    //如果我们处理完成需要再次提交表单则可以使用submit提交,如下
+    //Form.api.submit(this, success, error);
+    return false;
 });
 ```
 

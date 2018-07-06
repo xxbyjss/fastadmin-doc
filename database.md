@@ -33,23 +33,23 @@ order: 7
 
 ## 以特殊字符结尾的规则 
 
-| 结尾字符    | 示例          | 类型要求        | 字段说明                     |
-| ------- | ----------- | ----------- | ------------------------ |
-| time    | refreshtime | int         | 识别为日期时间型数据，自动创建选择时间的组件   |
-| image   | smallimage  | varchar     | 识别为图片文件，自动生成可上传图片的组件,单图  |
-| images  | smallimages | varchar     | 识别为图片文件，自动生成可上传图片的组件,多图  |
-| file    | attachfile  | varchar     | 识别为普通文件，自动生成可上传文件的组件,单文件 |
-| files   | attachfiles | varchar     | 识别为普通文件，自动生成可上传文件的组件,多文件 |
-| avatar  | miniavatar  | varchar     | 识别为头像，自动生成可上传图片的组件,单图    |
-| avatars | miniavatars | varchar     | 识别为头像，自动生成可上传图片的组件,多图    |
-| content | maincontent | text        | 识别为内容，自动生成带编辑器的组件        |
-| _id     | user_id     | int/varchar | 识别为关联字段，自动生成可自动完成的文本框，单选 |
-| _ids    | user_ids    | varchar     | 识别为关联字段，自动生成可自动完成的文本框，多选 |
-| list    | timelist    | enum        | 识别为列表字段，自动生成单选下拉列表       |
-| list    | timelist    | set         | 识别为列表字段，自动生成多选下拉列表       |
-| data    | hobbydata   | enum        | 识别为选项字段，自动生成单选框          |
-| data    | hobbydata   | set         | 识别为选项字段，自动生成复选框          |
-| switch  | siteswitch  | tinyint     | 识别为开头字段，自动生成可选单选框        |
+| 结尾字符 | 示例        | 类型要求    | 字段说明                                           |
+| -------- | ----------- | ----------- | -------------------------------------------------- |
+| time     | refreshtime | int         | 识别为日期时间型数据，自动创建选择时间的组件       |
+| image    | smallimage  | varchar     | 识别为图片文件，自动生成可上传图片的组件,单图      |
+| images   | smallimages | varchar     | 识别为图片文件，自动生成可上传图片的组件,多图      |
+| file     | attachfile  | varchar     | 识别为普通文件，自动生成可上传文件的组件,单文件    |
+| files    | attachfiles | varchar     | 识别为普通文件，自动生成可上传文件的组件,多文件    |
+| avatar   | miniavatar  | varchar     | 识别为头像，自动生成可上传图片的组件,单图          |
+| avatars  | miniavatars | varchar     | 识别为头像，自动生成可上传图片的组件,多图          |
+| content  | maincontent | text        | 识别为内容，自动生成富文本编辑器(需安装富文本插件) |
+| _id      | user_id     | int/varchar | 识别为关联字段，自动生成可自动完成的文本框，单选   |
+| _ids     | user_ids    | varchar     | 识别为关联字段，自动生成可自动完成的文本框，多选   |
+| list     | timelist    | enum        | 识别为列表字段，自动生成单选下拉列表               |
+| list     | timelist    | set         | 识别为列表字段，自动生成多选下拉列表               |
+| data     | hobbydata   | enum        | 识别为选项字段，自动生成单选框                     |
+| data     | hobbydata   | set         | 识别为选项字段，自动生成复选框                     |
+| switch   | siteswitch  | tinyint     | 识别为开头字段，自动生成开头组件                   |
 
 >  温馨提示：以list或data结尾的字段必须搭配enum或set类型才起作用 
 

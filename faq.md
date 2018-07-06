@@ -70,14 +70,19 @@ FastAdmin的数据库安装文件保存在 [application/admin/command/Install/fa
 1. 找到`/public/assets/css/backend.css` 这个文件，默认是：
 
 ``` css
-@import url("../css/bootstrap.min.css");
-@import url("../css/fastadmin.min.css");
+@import url("../css/bootstrap.css");
+@import url("../css/fastadmin.css");
 @import url("../css/skins/skin-green.css");
 @import url("../css/iconfont.css");
 @import url("../libs/font-awesome/css/font-awesome.min.css");
 @import url("../libs/toastr/toastr.min.css");
-@import url("../libs/layer/build/skin/default/layer.css");
-@import url("../css/backend-func.css");
+@import url("../libs/fastadmin-layer/dist/theme/default/layer.css");
+@import url("../libs/bootstrap-table/dist/bootstrap-table.min.css");
+@import url("../libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css");
+@import url("../libs/bootstrap-daterangepicker/daterangepicker.css");
+@import url("../libs/nice-validator/dist/jquery.validator.css");
+@import url("../libs/bootstrap-select/dist/css/bootstrap-select.min.css");
+@import url("../libs/fastadmin-selectpage/selectpage.css");
 ```
 
 2. 其中可以看到只加载了`skin-green.css`这个皮肤，如果需要启用其它皮肤可以在文件末尾追加
@@ -89,12 +94,13 @@ FastAdmin的数据库安装文件保存在 [application/admin/command/Install/fa
 如果需要一次性加载全部的皮肤样式，则把`skin-green`改为`_all-skins`即可
 
 3. 最后修改`application/admin/views/index/index.html`中第6行，将`skin-green`换成你需要的颜色标识
+4. 注意生产环境还需要执行`php think min -m all -r all`才会生效
 
 ## php think install报不是内部或外部命令
 
 这是由于php.exe文件所在目录未加入到PATH环境变量导致的
 
-找到`php.exe`文件所在的目录，将该目录加入到系统PATH环境变量中后，重启即可解决
+找到`php.exe`文件所在的目录，将该目录加入到系统PATH环境变量中后，重启CMD即可解决
 
 
 ## php think install报command not found
@@ -104,6 +110,12 @@ FastAdmin的数据库安装文件保存在 [application/admin/command/Install/fa
 有两种解决办法，首先尝试使用`which php`找到php所在的位置。
 1. 找到php脚本程序所在的目录，加入到PATH环境变量中去，使用`export PATH=$PATH:php脚本程序所在目录`
 2. 找到php脚本程序文件，使用`ln -s php脚本程序文件 /usr/bin/php`
+
+## 安装后访问后台和会员中心都是显示首页
+
+这是由于伪静态没有生效或错误导致的。请参考下方的Apache和Nginx伪静态配置
+
+
 
 ## 安装后只能访问首页，其它页均报no input file specified
 
@@ -156,7 +168,7 @@ server {
             index  index.html index.htm index.php;
             	#主要是这一段一定要确保存在
                 if (!-e $request_filename) {
-                    rewrite  ^(.*)$  /index.php/$1  last;
+                    rewrite  ^(.*)$  /index.php?s=/$1  last;
                     break;
                 }
                 #结束
@@ -252,6 +264,14 @@ top.window.Backend.api.sidebar({
 在FastAdmin中压缩打包JS和CSS文件需要NodeJS的支持
 在Windows下需要手动配置Node的可执行文件,请修改`application/admin/command/Min.php`中`$nodeExec`的值
 如你的Node可执行文件是`C:/Program Files/nodejs/node.exe`，则请配置`$nodeExec = '"C:/Program Files/nodejs/node.exe"'`;
+
+
+
+## 提示你所浏览的页面暂时无法访问
+
+如果我们在FastAdmin开发过程中遇到此错误，说明我们`application/config.php`中的`app_debug`是关闭的，必须开启`app_debug`为`true`才可以显示出详细的错误信息。如果开启`app_debug`仍然显示不出详细错误，请确保`php.ini`中的`display_error`为开启状态。
+
+
 
 
 ## 提示未知的数据格式或网络错误
