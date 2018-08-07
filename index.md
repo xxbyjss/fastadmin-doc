@@ -65,13 +65,19 @@ Git@OSC: https://gitee.com/karson/fastadmin
 
 感谢以下的项目,排名不分先后
 
-ThinkPHP：http://www.thinkphp.cn
+ThinkPHP：[http://www.thinkphp.cn](http://www.thinkphp.cn/)
 
-AdminLTE：https://almsaeedstudio.com
+AdminLTE：[https://adminlte.io](https://adminlte.io/)
 
-Bootstrap：http://getbootstrap.com
+Bootstrap：[http://getbootstrap.com](http://getbootstrap.com/)
 
-jQuery：http://jquery.com
+jQuery：[http://jquery.com](http://jquery.com/)
+
+Bootstrap-table：<https://github.com/wenzhixin/bootstrap-table>
+
+Nice-validator: [https://validator.niceue.com](https://validator.niceue.com/)
+
+SelectPage: <https://github.com/TerryZ/SelectPage>
 
 
 ## **版权信息**

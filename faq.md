@@ -115,8 +115,6 @@ FastAdmin的数据库安装文件保存在 [application/admin/command/Install/fa
 
 这是由于伪静态没有生效或错误导致的。请参考下方的Apache和Nginx伪静态配置
 
-
-
 ## 安装后只能访问首页，其它页均报no input file specified
 
 这是由于伪静态没有生效或错误导致的。

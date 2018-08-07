@@ -11,7 +11,7 @@ FastAdmin基于ThinkPHP5强大的命令行功能扩展了一系列命令行功�
 
 ### 准备工作
 
-在数据库中创建一个`fa_test`数据表，编辑好表字段结构，并且一定写上`字段注释`和`表注释`，相关数据表字段的设计要求可以参考[数据库](https://doc.fastadmin.net/docs/database.html)章节。FastAdmin在生成CRUD时会根据字段属性、字段注释、表注释自动生成语言包、组件和排版。
+在数据库中创建一个`fa_test`数据表，编辑好表字段结构，并且一定写上`字段注释`和`表注释`，相关数据表字段的设计要求可以参考[数据库](https://doc.fastadmin.net/docs/database.html)章节。FastAdmin在生成CRUD时会根据`字段属性`、`字段注释`、`表注释`自动生成语言包、组件和排版。
 
 请确保php所在的目录已经加入到系统环境变量，否则会提示找不到该命令
 
@@ -69,6 +69,7 @@ php think crud -t test --relation=category --relation=admin --relationforeignkey
 --selectpagesuffix[=SELECTPAGESUFFIX]      自动生成Selectpage组件的字段后缀
 --ignorefields[=IGNOREFIELDS]      	       排除的字段
 --editorclass[=EDITORCLASS]                自动生成富文本组件的字段后缀
+--headingfilterfield[=HEADINGFILTERFIELD]  自动生成筛选过滤选项卡的字段，默认是status字段
 --sortfield[=SORTFIELD]                    排序字段
 ```
 
@@ -218,10 +219,11 @@ php think api -h
 
 控制器注释
 
-| 名称       | 描述                               | 示例        |
-| ---------- | ---------------------------------- | ----------- |
-| @ApiSector | API分组名称                        | (测试分组)  |
-| @ApiRoute  | API接口URL，此@ApiRoute只是基础URL | (/api/test) |
+| 名称         | 描述                                   | 示例        |
+| ------------ | -------------------------------------- | ----------- |
+| @ApiSector   | API分组名称                            | (测试分组)  |
+| @ApiRoute    | API接口URL，此@ApiRoute只是基础URL     | (/api/test) |
+| @ApiInternal | 忽略的控制器,表示此控制将不加入API文档 | 无          |
 
 控制器方法注释
 
@@ -292,15 +294,13 @@ class Test extends \app\common\controller\Api
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
-     * @ApiReturn   (data="{
-     *  'code':'0',
-     *  'mesg':'返回成功'
-     * }")
+     * @ApiReturn   ({
+		'code':'1',
+		'mesg':'返回成功'
+     * })
      */
     public function test($id = '', $name = '')
     {
-        echo "id={$id}\n";;
-        echo "name={$name}\n";
         $this->success("返回成功", $this->request->request());
     }
 

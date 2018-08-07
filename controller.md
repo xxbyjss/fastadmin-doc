@@ -365,13 +365,13 @@ protected $noNeedRight = []; //无需鉴权的方法,但需要登录
 protected $noNeedLogin = ['mywork'];
 ```
 
-比如我们有定义一个方法`mytest`，而这个方法是需要登录后仍何管理员都可以访问，则我们需要在当前的控制器定义
+比如我们有定义一个方法`mytest`，而这个方法是需要登录后任何管理员都可以访问，则我们需要在当前的控制器定义
 
 ```php
 prtected $noNeedRight = ['mytest'];
 ```
 
-如果如我们需要动态定义，请务必放在调用父类的`_initialize`方法之前，否则是不会生效的。
+如果我们需要动态定义，请务必放在调用父类的`_initialize`方法之前，否则是不会生效的。
 
 ## 视图渲染
 
@@ -444,4 +444,4 @@ Config.demo.name
 
 如果我们需要使用自己的模板布局，在当前控制器定义`protected $layout = '布局模板';`即可。
 
-请注意如果采用了自己的模板布局或禁用了模板布局，将无法使用FastAdmin的JS按需加载和`Config`变量访问。
+请注意如果采用了自己的模板布局或禁用了模板布局，将无法使用FastAdmin的`JS按需加载`和`Config`变量访问。
